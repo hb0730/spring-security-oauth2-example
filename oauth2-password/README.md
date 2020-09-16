@@ -19,5 +19,10 @@ WebSecurityConfigurerAdapter的拦截顺序要先于ResourceServerConfigurerAdap
 
 <img src="https://github.com/hb0730/spring-security-oauth2-example/blob/master/doc/password/password-03.png" alt="3">
 
-
-
+# 默认地址 `org.springframework.security.oauth2.provider.endpoint`
+> /oauth/authorize 默认授权地址 
+> /oauth/token 获取token地址 
+> /oauth/confirm_access 用户确认授权页面 
+> /oauth/error 错误界面 
+> /oauth/check_token 解码token,获取token对应的全部信息 
+> /oauth/token_key 公钥令牌验证, 如果使用JWT令牌
