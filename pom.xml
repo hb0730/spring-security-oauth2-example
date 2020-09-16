@@ -8,6 +8,7 @@
         <module>oauth2-implicit</module>
         <module>oauth2-authorization-code</module>
         <module>oauth2-client-credentials</module>
+        <module>oauth2-refresh-token</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
