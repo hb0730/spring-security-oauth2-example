@@ -13,11 +13,11 @@ WebSecurityConfigurerAdapter的拦截顺序要先于ResourceServerConfigurerAdap
 文章:[WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](https://www.jianshu.com/p/fe1194ca8ecd)
 
 # 接口调用
-<img src="https://github.com/hb0730/spring-security-oauth2-example/blob/doc/password/password-01.png" alt="1">
+<img src="https://github.com/hb0730/spring-security-oauth2-example/blob/master/doc/password/password-01.png" alt="1">
 
-<img src="https://github.com/hb0730/spring-security-oauth2-example/blob/doc/password/password-01.png" alt="2">
+<img src="https://github.com/hb0730/spring-security-oauth2-example/blob/master/doc/password/password-02.png" alt="2">
 
-<img src="https://github.com/hb0730/spring-security-oauth2-example/blob/doc/password/password-01.png" alt="3">
+<img src="https://github.com/hb0730/spring-security-oauth2-example/blob/master/doc/password/password-03.png" alt="3">
 
 
 
