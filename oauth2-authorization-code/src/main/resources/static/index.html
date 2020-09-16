@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    function getToken(code) {
+        $.ajax({
+            url: "/oauth/token",
+            type: "POST",
+            dataType: "json",
+            data: {
+                'grant_type': 'authorization_code',
+                'code': code,
+                'redirect_uri': 'http://localhost:8080/',
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa("client:secret"))
+            },
+            success: function (result) {
+                alert("通过code,拿到token: " + JSON.stringify(result))
+            }
+        })
+    }
+
+    var code = window.location.search.split("?code=")[1];
+    alert("拿到code: " + code)
+    getToken(code)
+</script>
+</html>
