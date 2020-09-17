@@ -10,6 +10,7 @@
         <module>oauth2-client-credentials</module>
         <module>oauth2-refresh-token</module>
         <module>oauth2-auth-resource</module>
+        <module>oauth2-page</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
