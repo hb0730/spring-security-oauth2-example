@@ -11,7 +11,7 @@ spring security oauth2 demo(security oauth2案例)
 |oauth2-auth-resource|	综合测试, 认证服务器,资源服务器独立允许,授权码,密码,刷新token|
 |oauth2-page|自定义login页面|
 |oauth2-mysql|jdbc存储令牌以及存储客户端信息|
-
+|oauth2-redis|redis存储令牌信息jdbc存储客户端信息|
 
 # 注意
 部分项目来自[知一码园](https://zhiyi.zone/)
