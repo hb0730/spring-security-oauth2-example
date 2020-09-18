@@ -20,4 +20,6 @@ INSERT INTO `oauth2-test`.`oauth_client_details`(`client_id`, `resource_ids`, `c
 
 2. postman: curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=authorization_code&code=1JuO6V' "http://client:secret@localhost:8080/oauth/token"
 
+<img src="https://github.com/hb0730/spring-security-oauth2-example/blob/master/doc/jdbc/jdbc-01.png" alt="1">
+
 3. 数据库 `oauth_access_token` 表中会增加一笔记录
