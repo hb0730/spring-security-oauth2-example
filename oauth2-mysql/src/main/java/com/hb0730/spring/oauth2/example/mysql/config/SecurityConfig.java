@@ -8,8 +8,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 /**
  * pring security配置
@@ -40,6 +42,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("admin")
                 .password(passwordEncoder().encode("123456"))
                 .roles("ADMIN");
+    }
+
+    @Override
+    @Bean
+    protected UserDetailsService userDetailsService() {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withUsername("user")
+                .password(passwordEncoder().encode("123456"))
+                .authorities("ROLE_USER")
+                .build());
+        manager.createUser(User.withUsername("admin")
+                .password(passwordEncoder().encode("123456"))
+                .authorities("ROLE_ADMIN")
+                .build());
+        return manager;
     }
 
     /**
