@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/auth?useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&autoReconnect=true&serverTimezone=UTC
+    username: root
+    password: 123456
+    initialization-mode: ALWAYS
+    schema: classpath:ddl.sql
+logging:
+  level:
+    root: WARN
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
