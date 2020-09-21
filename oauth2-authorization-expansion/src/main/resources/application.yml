@@ -1,0 +1,9 @@
+application:
+  security:
+    oauth:
+      login-processing-url: /oauth/login
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
