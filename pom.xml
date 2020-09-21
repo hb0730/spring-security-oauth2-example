@@ -14,6 +14,7 @@
         <module>oauth2-mysql</module>
         <module>oauth2-redis</module>
         <module>oauth2-authorization-expansion</module>
+        <module>oauth2-authorization-more-grant-type</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
