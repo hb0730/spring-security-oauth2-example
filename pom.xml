@@ -12,6 +12,7 @@
         <module>oauth2-auth-resource</module>
         <module>oauth2-page</module>
         <module>oauth2-mysql</module>
+        <module>oauth2-redis</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
