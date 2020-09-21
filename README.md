@@ -103,7 +103,8 @@ spring security oauth2 demo(security oauth2案例)
 * /oauth/token_key：提供公有密匙的端点，如果你使用JWT令牌的话
 
 # 注意
-部分项目来自[知一码园](https://zhiyi.zone/)
+部分项目来自[知一码园](https://zhiyi.zone/) , [啊月很乖](https://echocow.cn/)
 
 # thanks
 * [知一码园](https://zhiyi.zone/)
+* [啊月很乖](https://echocow.cn/)
