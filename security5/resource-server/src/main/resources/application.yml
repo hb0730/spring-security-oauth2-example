@@ -1,0 +1,22 @@
+server:
+  port: 8082
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          client-id: client
+          client-secret: secret
+            ### 不同端点所对应的filter不同，resource server需要client客户端ClientCredentialsTokenEndpointFilter
+            ### 详情在于内置几组的filter不同FilterChainProxy#doFilterInternal 中getFilters(fwRequest);获取的url对应的filter组
+            ### 而filter组在创建时已经确认FilterChainProxy(List<SecurityFilterChain> filterChains) 由webSecurity#performBuild所确认
+            ### HttpSecurity#performBuild 构建出filters,如何确定filters
+          ### SecurityConfigurer来确定需要加载的filter，那是如何加载ClientCredentialsTokenEndpointFilter呢
+          ### AuthorizationServerSecurityConfigurer 来确定每个端点对应的filter
+#          introspection-uri: http://localhost:8081/introspect
+          introspection-uri: http://localhost:8081/oauth/check_token
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
