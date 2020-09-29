@@ -14,6 +14,7 @@ spring security oauth2 demo(security oauth2案例)
 |oauth2-redis|redis存储令牌信息|
 |oauth2-authorization-expansion|授权服务器扩展(自定义授权页面与登录页面等)|
 |oauth2-more-grantType|自定义授权(email,sms等)|
+|security5-resource|使用security5方式创建资源服务器|
 
 # 客户端加密
 在 spring security oauth 中，推荐加密我们的客户端信息，客户端和授权服务器建立适合授权服务器安全要求的客户端认证方法。授权服务器可以接受满足其安全要求的任何形式的客户端身份验证。一般来说我们使用的是 **密码验证** 的方式加密我们的客户端信息。

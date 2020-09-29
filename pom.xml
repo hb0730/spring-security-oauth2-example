@@ -15,7 +15,7 @@
         <module>oauth2-redis</module>
         <module>oauth2-authorization-expansion</module>
         <module>oauth2-authorization-more-grant-type</module>
-        <module>security5</module>
+        <module>security5-resource</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
