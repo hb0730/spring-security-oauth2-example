@@ -62,7 +62,7 @@
 >
 > Security5 Oauth2Login登录核心关注**redirectUris**重定向的路径问题
 >
-> 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/authoricationServer-01.png">
+> 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/authorizationServer-01.png">
 >
 
 ```java
