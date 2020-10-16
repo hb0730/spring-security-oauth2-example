@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author bing_huang
  */
 @SpringBootApplication
-public class OAuth2LoginResourceServerApplication {
+public class OAuth2LoginSSOApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OAuth2LoginResourceServerApplication.class, args);
+        SpringApplication.run(OAuth2LoginSSOApplication.class, args);
     }
 }

@@ -8,13 +8,19 @@ server:
 security:
   oauth2:
     client:
+      # 客户端id
       client-id: client1
+      # 客户端secret
       client-secret: secret
+      # token地址
       access-token-uri: http://localhost:8081/oauth/token
+      # 授权地址
       user-authorization-uri: http://localhost:8081/oauth/authorize
+      # 响应地址 这里自定义
       pre-established-redirect-uri: http://localhost:8085/client1
       use-current-uri: false
     resource:
+      # 检查token
       token-info-uri: http://localhost:8081/oauth/check_token
     sso:
       login-path: /client1

@@ -39,7 +39,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable().cors();
-//        http.addFilterBefore(new BearerTokenAuthenticationFilter(this.authenticationManager()), RequestCacheAwareFilter.class);
         // 这里并没有禁用session，page 跳转使用的session
         ;
 
