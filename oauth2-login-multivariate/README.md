@@ -8,7 +8,7 @@
 >
 > 源码地址： [oauth2-login-multivariate](https://github.com/hb0730/spring-security-oauth2-example/tree/master/oauth2-login-multivariate)
 >
-> 博客地址: https://blog.hb0730.com
+> 博客地址: https://blog.hb0730.com/archives/springsecurity5%E4%B9%8Boauth2client%E8%AE%A4%E8%AF%81
 
 # 1. 搭建授权服务器Authorization Server
 > Authorization Server采用的还是spring Security oauth提供的
