@@ -5,11 +5,16 @@
 * oauth2-login-sso 使用spring-security-oauth2方式
 
 > 本项目采用spring-boot的方式：spring-boot版本为:2.3.3.RELEASE 
+>
 > 源码地址： [oauth2-login-multivariate](https://github.com/hb0730/spring-security-oauth2-example/tree/master/oauth2-login-multivariate)
+>
 > 博客地址: https://blog.hb0730.com
+
 # 1. 搭建授权服务器Authorization Server
 > Authorization Server采用的还是spring Security oauth提供的
+>
 > 提供端口为：8081
+
 ## pom.xml
 ```xml
 <dependencies>
@@ -50,10 +55,16 @@
 ```
 ## Config配置
 * AuthorizationServerConfiguration
+
 > 主要提供了两个客户端 一个采用security5 Oauth2Client方式访问，一个通过传统的spring security Oauth SSO方式访问
+>
 > 采用的html方式进行登录,client 登录默认使用**授权码**方式，
+>
 > Security5 Oauth2Login登录核心关注**redirectUris**重定向的路径问题
+>
 > 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/authoricationServer-01.png">
+>
+
 ```java
 /**
  * 授权服务器配置
@@ -201,7 +212,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 ## Controller
+>
 > 主要就是返回视图
+>
+
 ```java
 /**
  * @author bing_huang
@@ -220,8 +234,12 @@ public class LoginController {
 ```
 
 # Spring Security Oauth之SSO
+>
 > 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/sso-05.png">
+>
 > 端口： 8085
+>
+
 ## pom.xml
 ```xml
 <dependencies>
@@ -329,8 +347,10 @@ logging:
 # 如果我们使用 security5 推荐的方式呢
 ## security-client
 > 目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-01.png">
-
+>
 > 端口: 8086
+>
+
 ### config配置
 * WebSecurityConfig
 ```java
@@ -395,11 +415,12 @@ logging:
 <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-02.png">
 
 地址栏: http://localhost:8081/oauth/authorize?response_type=code&client_id=client2&state=ym9ynGfFaLlMdFyJC1sBkakT9C2ttaUVwcAcdJt1BIY%3D&redirect_uri=http://localhost:8086/login/oauth2/code/client2
+
 授权登录
 <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-03.png">
 
-发现有一个必要配置`UserInfoEndpoint` `user_info_uri`
-按照**sso**方式我们发现还差一个`http://localhost:8081/oauth/check_token`,修改yaml
+发现有一个必要配置`UserInfoEndpoint` `user_info_uri`,按照**sso**方式我们发现还差一个`http://localhost:8081/oauth/check_token`,修改yaml
+
 ```yaml
 server:
   port: 8086
@@ -431,6 +452,7 @@ logging:
     org.springframework.security: DEBUG
 ```
 再一次访问，发现还有有问题
+
 <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-04.png">
 还有一个`user-name-attribute`
 
@@ -472,19 +494,23 @@ logging:
 ### security5 client 是如何获取access_token的，是通过那个filter换取access_token
 1. 查看错误日志发现
 <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-07.png">
-发现其中的类: `DefaultOAuth2UserService`,`OAuth2LoginAuthenticationProvider`,`OAuth2LoginAuthenticationFilter`
+
+发现其中的类: `DefaultOAuth2UserService` ,`OAuth2LoginAuthenticationProvider` ,`OAuth2LoginAuthenticationFilter`
 `OAuth2AuthorizationRequestRedirectFilter`,
 
-2. 查看`DefaultOAuth2UserService#loadUser`
-`OAuth2UserRequestEntityConverter`使用的是`BearerAuth`,而只有是资源服务时如**SSo EnableResourceServer**启用的是资源服务以及**securiy5 Resources**[springsecurity5之resourceserver资源服务器](https://blog.hb0730.com/archives/springsecurity5%E4%B9%8Bresourceserver%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8)，才是通过**BearerAuthen认证**其余都是**Basic认证**
+2. 查看 `DefaultOAuth2UserService#loadUser`, `OAuth2UserRequestEntityConverter`使用的是`BearerAuth`,而只有是资源服务时如**SSo EnableResourceServer**启用的是资源服务以及**securiy5 Resources**[springsecurity5之resourceserver资源服务器](https://blog.hb0730.com/archives/springsecurity5%E4%B9%8Bresourceserver%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8)，才是通过**BearerAuthen认证**其余都是**Basic认证**
 
 **补充**
+
 * BearerAuth -----> BearerTokenAuthenticationFilter   resource-server
 * BasicAuth ------> BasicAuthenticationFilter		security-web （任何）
 
 ## Security5 resources server
+
 [springsecurity5之resourceserver资源服务器](https://blog.hb0730.com/archives/springsecurity5%E4%B9%8Bresourceserver%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8)
+
 新增一个controller 用于 `user-info-uri`
+
 ```java
 /**
  * 为了支持oauth2Login(), 为何不用oauth/check_token ，
