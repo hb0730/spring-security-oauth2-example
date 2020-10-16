@@ -1,7 +1,7 @@
 > 本项目采用spring-boot的方式：spring-boot版本为:2.3.3.RELEASE 
 > 本文主要是想提供一个401解决思路
 > 源码地址： [security5-resource](https://github.com/hb0730/spring-security-oauth2-example/tree/master/security5-resource)
-> 博客地址: https://blog.hb0730.com
+> 博客地址: https://blog.hb0730.com/archives/springsecurity5%E4%B9%8Bresourceserver%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8
 
 # authorizationServer 认证服务器
 ## pom 依赖
