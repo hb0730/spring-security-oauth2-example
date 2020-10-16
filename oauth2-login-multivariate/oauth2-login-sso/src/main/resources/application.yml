@@ -1,0 +1,26 @@
+server:
+  port: 8085
+  servlet:
+    session:
+      cookie:
+        # Possible CSRF detected - state parameter was required but no state could be
+        name: resource1
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: secret
+      access-token-uri: http://localhost:8081/oauth/token
+      user-authorization-uri: http://localhost:8081/oauth/authorize
+      pre-established-redirect-uri: http://localhost:8085/client1
+      use-current-uri: false
+    resource:
+      token-info-uri: http://localhost:8081/oauth/check_token
+    sso:
+      login-path: /client1
+
+logging:
+  level:
+    root: WARN
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG

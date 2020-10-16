@@ -1,0 +1,21 @@
+server:
+  port: 8082
+  servlet:
+    session:
+      cookie:
+        name: resources-server
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          client-id: client2
+          client-secret: secret
+          introspection-uri: http://localhost:8081/oauth/check_token
+
+logging:
+  level:
+    root: WARN
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG

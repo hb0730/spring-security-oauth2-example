@@ -16,6 +16,7 @@
         <module>oauth2-authorization-expansion</module>
         <module>oauth2-authorization-more-grant-type</module>
         <module>security5-resource</module>
+        <module>oauth2-login-multivariate</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

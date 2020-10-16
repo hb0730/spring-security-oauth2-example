@@ -1,0 +1,35 @@
+server:
+  port: 8086
+  servlet:
+    session:
+      cookie:
+        name: resource2
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          client2:
+            provider: client2
+            client-id: client2
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          client2:
+            authorization-uri: http://localhost:8081/oauth/authorize
+            token-uri: http://localhost:8081/oauth/token
+            #            user-info-uri: http://localhost:8081/oauth/check_token
+            # 为何不用/oauth/check_token ,原因是/oauth/check_token是basic认证
+            # DefaultOAuth2UserService#loadUser
+            # Bearer 认证 Security5 resources BearerTokenAuthenticationFilter
+            # Basic 认证 Security Basic BasicAuthenticationFilter
+            user-info-uri: http://localhost:8082/user/me
+            userInfoAuthenticationMethod: post
+            user-name-attribute: name
+
+logging:
+  level:
+    root: WARN
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
