@@ -53,7 +53,7 @@
 > 主要提供了两个客户端 一个采用security5 Oauth2Client方式访问，一个通过传统的spring security Oauth SSO方式访问
 > 采用的html方式进行登录,client 登录默认使用**授权码**方式，
 > Security5 Oauth2Login登录核心关注**redirectUris**重定向的路径问题
-> 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/authoricationServer-01.png">
+> 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/authoricationServer-01.png">
 ```java
 /**
  * 授权服务器配置
@@ -220,7 +220,7 @@ public class LoginController {
 ```
 
 # Spring Security Oauth之SSO
-> 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/sso-05.png">
+> 项目目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/sso-05.png">
 > 端口： 8085
 ## pom.xml
 ```xml
@@ -313,22 +313,22 @@ logging:
 
 # 访问
 当使用浏览器访问http://localhost:8085/ 时会自动跳转到 http://localhost:8081
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/sso-01.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/sso-01.png">
 
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/sso-02.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/sso-02.png">
 
 然后输入用户名密码`user/123456` 登录授权，值得我们注意的是地址栏的变化
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/sso-03.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/sso-03.png">
 
 是`授权码`模式登录的，授权完成后又会跳回 http://localhost:8085
 
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/sso-04.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/sso-04.png">
 
 这里就已经完成了sso登录，sso登录采用的是client`授权码`方式
 
 # 如果我们使用 security5 推荐的方式呢
 ## security-client
-> 目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/security5-oauth2login-01.png">
+> 目录: <img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-01.png">
 
 > 端口: 8086
 ### config配置
@@ -392,11 +392,11 @@ logging:
 ### 访问
 
 配置完成后启动项目访问 http://localhost:8086
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/security5-oauth2login-02.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-02.png">
 
 地址栏: http://localhost:8081/oauth/authorize?response_type=code&client_id=client2&state=ym9ynGfFaLlMdFyJC1sBkakT9C2ttaUVwcAcdJt1BIY%3D&redirect_uri=http://localhost:8086/login/oauth2/code/client2
 授权登录
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/security5-oauth2login-03.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-03.png">
 
 发现有一个必要配置`UserInfoEndpoint` `user_info_uri`
 按照**sso**方式我们发现还差一个`http://localhost:8081/oauth/check_token`,修改yaml
@@ -431,7 +431,7 @@ logging:
     org.springframework.security: DEBUG
 ```
 再一次访问，发现还有有问题
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/security5-oauth2login-04.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-04.png">
 还有一个`user-name-attribute`
 
 ```yaml
@@ -467,11 +467,11 @@ logging:
 ```
 访问发现是未经授权**401**
 
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/security5-oauth2login-05.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-05.png">
 
 ### security5 client 是如何获取access_token的，是通过那个filter换取access_token
 1. 查看错误日志发现
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/security5-oauth2login-07.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-07.png">
 发现其中的类: `DefaultOAuth2UserService`,`OAuth2LoginAuthenticationProvider`,`OAuth2LoginAuthenticationFilter`
 `OAuth2AuthorizationRequestRedirectFilter`,
 
@@ -562,4 +562,4 @@ logging:
 
 ## Security5 Client5主要filter
 
-<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/security5/oauth2-login-multivariate/security5-oauth2login-06.png">
+<img src="https://raw.githubusercontent.com/hb0730/spring-security-oauth2-example/master/doc/oauth2-login-multivariate/security5-oauth2login-06.png">
