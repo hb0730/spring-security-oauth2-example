@@ -17,6 +17,7 @@ spring security oauth2 demo(security oauth2案例)
 |security5-resource|使用security5方式创建资源服务器|
 |oauth2-login-multivariate|spring security oauth2 和spring security5方法登录|
 |security5-client-login|spring security5 oauth2Login()自定义重定向uri|
+|oauth2-login-redirect|oauth2 form表单登录重定向|
 
 # 客户端加密
 在 spring security oauth 中，推荐加密我们的客户端信息，客户端和授权服务器建立适合授权服务器安全要求的客户端认证方法。授权服务器可以接受满足其安全要求的任何形式的客户端身份验证。一般来说我们使用的是 **密码验证** 的方式加密我们的客户端信息。

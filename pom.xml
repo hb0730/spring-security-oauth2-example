@@ -18,6 +18,7 @@
         <module>security5-resource</module>
         <module>oauth2-login-multivariate</module>
         <module>security5-client-login</module>
+        <module>oauth2-login-redirect</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
