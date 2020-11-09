@@ -40,13 +40,20 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
-        clients.inMemory().withClient("client1")
+        clients.inMemory().withClient("client")
                 .secret(passwordEncoder.encode("secret"))
                 .authorizedGrantTypes("password", "refresh_token", "authorization_code")
                 .redirectUris("https://blog.hb0730.com")
                 .authorities("ROLE_ALL")
                 // 自动授权
                 .autoApprove(true)
+                .scopes("read", "write")
+                .and()
+                .withClient("client2")
+                .secret(passwordEncoder.encode("secret"))
+                .authorizedGrantTypes("password", "refresh_token", "authorization_code")
+                .redirectUris("https://blog.hb0730.com")
+                .authorities("ROLE_ALL")
                 .scopes("read", "write");
     }
 
