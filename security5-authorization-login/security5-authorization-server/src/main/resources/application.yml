@@ -1,0 +1,14 @@
+server:
+  port: 8099
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          client-id: test1
+          client-secret: secret
+          introspection-uri: http://localhost:8099/oauth/check_token

@@ -1,0 +1,27 @@
+server:
+  port: 9000
+  servlet:
+    session:
+      cookie:
+        name: security5-client
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          security5-client:
+            authorization-uri: http://localhost:8099/oauth/authorize
+            token-uri: http://localhost:8099/oauth/token
+            user-info-uri: http://localhost:8099/oauth/userinfo
+            user-name-attribute: name
+        registration:
+          security5-client:
+            provider: security5-client
+            client-id: test1
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirectUri: "{baseUrl}/login/oauth2/code/{registrationId}"
+logging:
+  level:
+    org.springframework.security: DEBUG
