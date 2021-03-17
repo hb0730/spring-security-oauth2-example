@@ -91,5 +91,7 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public void configure(AuthorizationServerSecurityConfigurer security) {
         security
                 .checkTokenAccess("isAuthenticated()");
+        //且url中有client_id和client_secret的会走ClientCredentialsTokenEndpointFilter
+        security.allowFormAuthenticationForClients();
     }
 }
